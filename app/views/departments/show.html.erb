@@ -1,2 +1,3 @@
-<h1>Departments#show</h1>
-<p>Find me in app/views/departments/show.html.erb</p>
+<h1><%= @department.name %> Department </h1>
+
+<%= link_to 'Add Items', new_department_item_path(@department.id)%>

@@ -1,0 +1,11 @@
+<%= form_with(model: @department, local: true, class: "ui form") do |f| %>
+<h1><%= @department.id ? ('Edit Department') : ('Add Department') %></h1>
+  <div class="field">
+    <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, required: true, placeholder: "Department Name" %>
+  </div>
+  <div class="field">
+
+<%= f.submit nil, class: "i green button inverted"%>
+<% end %>
