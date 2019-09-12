@@ -1,9 +1,9 @@
 class ItemsController < ApplicationController
   before_action :set_department
-  before_action :set_item, only: [:show]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
-    @items = @department.items.all
+    @items = @department.items
   end
 
   def show
@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-      redirect_to @item
+      redirect_to department_path(@department.id)
     else
       render :edit
     end
@@ -37,7 +37,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    redirect_to department_item_path
+    redirect_to department_path(@department.id)
   end
 
   private

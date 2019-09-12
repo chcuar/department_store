@@ -1,3 +1,28 @@
-<h1><%= @department.name %> Department </h1>
 
-<%= link_to 'Add Items', new_department_item_path(@department.id)%>
+
+<h1 class='ui header'><%= @department.name %> Department</h1>
+
+<table class="ui celled table">
+  <thead>
+    <tr><th>Item</th>
+    <th>Price</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr></thead>
+  <tbody>
+    <% @items.each do |i|%>
+      <tr>
+        <td data-label="Name"><%= i.name %></td>
+        <td data-label="Price">
+          <div class="ui tag labels">
+            <a class="ui label">
+              $<%=i.price %>
+            </a></td>
+        <td><%= link_to '<i class="edit outline icon"></i>'.html_safe, edit_department_item_path(@department, i) %></td>
+        <td><%= link_to '<i class="trash alternate icon"></i>'.html_safe, department_item_path(@department, i), method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Add Item', new_department_item_path(@department.id)%>

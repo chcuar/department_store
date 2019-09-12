@@ -1,4 +1,17 @@
-<h1>Departments</h1>
+<h1 class="ui block header">
+  Departments
+</h1>
+
+<% @departments.each do |p|%>
+<button class="massive ui black basic button">
+  <%= link_to p.name, p  %>
+</button>
+<%= link_to '<i class="edit outline icon"></i>'.html_safe, edit_department_path(p) %>
+<%= link_to '<i class="trash alternate icon"></i>'.html_safe, department_path(p), method: :delete %>
+<br/>
+<br/>
+<%end%>
 
 
-<%= link_to 'Add Department', new_department_path %>
+
+
